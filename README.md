@@ -1,40 +1,51 @@
 # Luck Is For Dudes — Website
 
-A simple one-page website for **Luck Is For Dudes**, a small online shop selling in-house parody artwork on t-shirts, mugs, keyrings and more.
+A simple website for **Luck Is For Dudes**, a small online shop selling in-house parody artwork on t-shirts, mugs, keyrings and more.
 
 You do **not** need to know how to code to use this. Everything is plain text you can edit.
 
 ---
 
-## How to open the website
+## Live links
 
-1. Open the folder `my-first-website` on your computer.
-2. Double-click **`index.html`** for the full site, or **`coming-soon.html`** for the holding page.
-3. It should open in your web browser (Chrome, Edge, Firefox, etc.).
+| What | URL |
+|------|-----|
+| Live site (Vercel) | https://luckisfordudes.vercel.app |
+| GitHub code | https://github.com/beagle182/luckisfordudes |
+| Planned domains | [luckisfordudes.com](https://luckisfordudes.com) · [luckisfordudes.co.uk](https://luckisfordudes.co.uk) |
+
+---
+
+## How to open the website on your computer
+
+1. Open the project folder on your computer (ideally named `luckisfordudes`).
+2. Double-click **`index.html`** for the **Coming Soon** holding page.
+3. Double-click **`full site.html`** for the full shop page (About, Products, Contact).
+4. It should open in your web browser (Chrome, Edge, Firefox, etc.).
 
 That’s it. If it opens in the wrong programme, right-click the file → **Open with** → choose your browser.
 
-### Holding page (coming soon)
-
-`coming-soon.html` is a simple “Luck Is For Dudes — Coming Soon” page in the same comic theme. Use it while the shop isn’t live yet. When you’re ready to launch, show visitors `index.html` instead (or rename files if your host always uses `index.html`).
+**While you’re launching:** keep `index.html` as Coming Soon so visitors see that first. When the shop is ready, swap the full site into `index.html`.
 
 ---
 
 ## What’s in this folder
 
-| File / folder   | What it does                                      |
-|-----------------|---------------------------------------------------|
-| `index.html`    | All the words and structure of the page           |
-| `styles.css`    | Colours, fonts, layout, comic-book look           |
-| `script.js`     | Mobile menu and the contact form “thank you” note |
-| `images/`       | Put your own photos here                          |
-| `README.md`     | This guide                                        |
+| File / folder     | What it does                                      |
+|-------------------|---------------------------------------------------|
+| `index.html`      | Coming Soon holding page (main page online)       |
+| `full site.html`  | Full one-page shop (About, Products, Contact)     |
+| `styles.css`      | Colours, fonts, layout, comic-book look           |
+| `script.js`       | Mobile menu and contact form “thank you” note     |
+| `images/`         | Put your own photos here                          |
+| `vercel.json`     | Small Vercel hosting settings                     |
+| `README.md`       | This guide                                        |
 
 ---
 
 ## How to change the text
 
-1. Open `index.html` in a text editor (Notepad, Notepad++, or [VS Code](https://code.visualstudio.com/)).
+1. Open the HTML file you want to edit in a text editor (Notepad, Notepad++, or [VS Code](https://code.visualstudio.com/)).
 2. Look for comments that say **`CHANGE THIS`** — they tell you what each bit is.
 3. Change only the words between the tags, for example:
 
@@ -52,7 +63,7 @@ That’s it. If it opens in the wrong programme, right-click the file → **Open
 
 ## How to change prices
 
-In `index.html`, find the product cards. Look for lines like:
+In `full site.html`, find the product cards. Look for lines like:
 
 ```html
 <p class="product-price">from £18</p>
@@ -66,7 +77,7 @@ Change `£18` to whatever you like (keep the £ symbol for British pounds).
 
 1. Put your image files in the **`images`** folder  
    (examples: `hero.jpg`, `about.jpg`, `tee.jpg`).
-2. In `index.html`, find an image tag. It might look like a coloured placeholder box, or like this:
+2. In `full site.html`, find an image tag. It might look like a coloured placeholder box, or like this:
 
 ```html
 <img src="images/about.jpg" alt="Luck Is For Dudes studio" class="about-photo">
@@ -98,14 +109,23 @@ When you’re ready for real messages, free services like [Formspree](https://fo
 
 ---
 
-## Putting the site online later
+## Hosting (Vercel)
 
-When you want a real web address (like `www.luckisfordudes.com`), options include:
+This project is deployed free on **Vercel**:
 
-- **Netlify** or **Cloudflare Pages** — free for simple sites; drag and drop this folder
-- **GitHub Pages** — free if you use GitHub
+- Project name: `luckisfordudes`
+- Production URL: https://luckisfordudes.vercel.app
 
-You don’t need that to edit and preview the site on your own computer.
+After you connect GitHub in the Vercel dashboard, pushes to this repo can update the live site automatically.
+
+### Your real domains (planned)
+
+| Domain | Notes |
+|--------|--------|
+| **luckisfordudes.com** | Primary domain (when DNS is pointed at Vercel) |
+| **luckisfordudes.co.uk** | UK domain (when DNS is pointed at Vercel) |
+
+When you’re ready to go live on those names, add them in Vercel → Project → **Settings** → **Domains**, then update DNS at your domain registrar (we can walk through that step by step).
 
 ---
 
