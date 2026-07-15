@@ -9,3 +9,6 @@ Desktop.ini
 # Local env / secrets (if you add any later)
 .env
 .env.*
+
+.vercel
+.env*
