@@ -40,7 +40,7 @@
         <li>Custom prints</li>
       </ul>
 
-      <!-- CHANGE THIS: optional email for “notify me” — form is demo only -->
+      <!-- Mailing list → Mailchimp via /api/subscribe (see MAILCHIMP-SETUP.md) -->
       <form class="holding-form" id="holding-form" novalidate>
         <label class="visually-hidden" for="holding-email">Email address</label>
         <div class="holding-form-row">
@@ -52,11 +52,17 @@
             required
             placeholder="your@email.com"
           >
-          <button type="submit" class="btn btn-primary">Notify me</button>
+          <button type="submit" class="btn btn-primary" id="holding-submit">Notify me</button>
+        </div>
+        <!-- Honeypot: leave empty — stops many bots. Hidden from real users. -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="holding-website">Website</label>
+          <input type="text" id="holding-website" name="website" tabindex="-1" autocomplete="off">
         </div>
         <p class="holding-form-note">
-          Optional — drop your email so we can shout when we launch.
-          (Demo only for now; doesn’t send mail yet.)
+          Join the list and we’ll email you when we launch.
+          You’ll get a confirmation email from us first (so we know it’s really you).
+          Unsubscribe anytime.
         </p>
         <p class="form-status" id="holding-status" role="status" aria-live="polite" hidden></p>
       </form>
@@ -78,25 +84,72 @@
 
       var form = document.getElementById("holding-form");
       var statusEl = document.getElementById("holding-status");
+      var submitBtn = document.getElementById("holding-submit");
       if (!form || !statusEl) return;
+
+      function showStatus(message, isError) {
+        statusEl.hidden = false;
+        statusEl.classList.toggle("is-error", !!isError);
+        statusEl.textContent = message;
+      }
 
       form.addEventListener("submit", function (event) {
         event.preventDefault();
-        var email = form.elements.namedItem("email");
-        var value = email && "value" in email ? String(email.value).trim() : "";
 
-        if (!value || value.indexOf("@") === -1 || value.indexOf(".") === -1) {
-          statusEl.hidden = false;
-          statusEl.classList.add("is-error");
-          statusEl.textContent = "Please enter a valid email address.";
+        var emailInput = form.elements.namedItem("email");
+        var websiteInput = form.elements.namedItem("website");
+        var email = emailInput && "value" in emailInput ? String(emailInput.value).trim() : "";
+        var website = websiteInput && "value" in websiteInput ? String(websiteInput.value).trim() : "";
+
+        if (!email || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+          showStatus("Please enter a valid email address.", true);
           return;
         }
 
-        statusEl.hidden = false;
-        statusEl.classList.remove("is-error");
-        // CHANGE THIS: thank-you message
-        statusEl.textContent = "Nice one — you’re on the list (demo). We’ll be live before you can say “POW!”";
-        form.reset();
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Joining…";
+        }
+        showStatus("One moment…", false);
+
+        fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email, website: website }),
+        })
+          .then(function (res) {
+            return res.json().then(function (data) {
+              return { ok: res.ok, data: data };
+            });
+          })
+          .then(function (result) {
+            if (result.data && result.data.ok) {
+              showStatus(
+                result.data.message ||
+                  "Almost there — check your inbox to confirm.",
+                false
+              );
+              form.reset();
+            } else {
+              showStatus(
+                (result.data && result.data.error) ||
+                  "Something went wrong. Please try again.",
+                true
+              );
+            }
+          })
+          .catch(function () {
+            showStatus(
+              "Could not reach the server. Check your connection and try again.",
+              true
+            );
+          })
+          .finally(function () {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Notify me";
+            }
+          });
       });
     })();
   </script>

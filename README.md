@@ -101,11 +101,19 @@ You can pick colours from sites like [coolors.co](https://coolors.co/) or any co
 
 ---
 
-## Contact form
+## Mailing list (Mailchimp)
 
-The form **looks** real and shows a thank-you message, but it does **not** send email yet.
+The **Notify me** box on the holding page saves emails in **Mailchimp**.
 
-When you’re ready for real messages, free services like [Formspree](https://formspree.io/) can connect a form to your inbox with a few small changes. Ask for help when you get there.
+- Storage location: your **Mailchimp Audience** (not GitHub, not the HTML files)
+- How: the form posts to `/api/subscribe` on Vercel, which calls Mailchimp with a secret API key
+- Double opt-in: people get a confirmation email before they’re fully subscribed
+
+**Setup guide:** see **`MAILCHIMP-SETUP.md`** (API key + Audience ID + Vercel env vars).
+
+### Contact form (full shop page)
+
+The contact form on `full site.html` is still a demo (thank-you message only). We can wire that up separately later.
 
 ---
 

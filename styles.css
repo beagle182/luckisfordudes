@@ -929,6 +929,23 @@ a:hover {
   border: 0;
 }
 
+/* Honeypot field — off-screen so bots may fill it, humans never see it */
+.hp-field {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.holding-form .btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+  box-shadow: var(--shadow);
+}
+
 @media (min-width: 520px) {
   .holding-form-row {
     flex-direction: row;
