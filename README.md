@@ -2,6 +2,11 @@
 
 A simple website for **Luck Is For Dudes**, a small online shop selling in-house parody artwork on t-shirts, mugs, keyrings and more.
 
+The shop is set up for **multiple sub-brands** (each with its own page and product areas). Example:
+
+- **Luck Is For Dudes** — core comic-parody merch (on the main shop page)
+- **Inches** — adult-themed silly sub-brand (`inches/`) with its own **T-shirts**, **Mugs** and **Keyrings**
+
 You do **not** need to know how to code to use this. Everything is plain text you can edit.
 
 ---
@@ -34,12 +39,46 @@ That’s it. If it opens in the wrong programme, right-click the file → **Open
 | File / folder     | What it does                                      |
 |-------------------|---------------------------------------------------|
 | `index.html`      | Coming Soon holding page (main page online)       |
-| `full site.html`  | Full one-page shop (About, Products, Contact)     |
+| `full site.html`  | Main shop: About, **Brands**, core Products, Contact |
+| `inches/`         | **Inches** sub-brand shop (adult silly, 18+)      |
+| `inches/index.html` | Inches page with T-shirts / Mugs / Keyrings areas |
 | `styles.css`      | Colours, fonts, layout, comic-book look           |
-| `script.js`       | Mobile menu and contact form “thank you” note     |
+| `script.js`       | Mobile menu, contact form, category filter        |
+| `api/subscribe.js`| Mailing list → Mailchimp                          |
+| `api/contact.js`  | Contact form → email you (Resend)                 |
 | `images/`         | Put your own photos here                          |
 | `vercel.json`     | Small Vercel hosting settings                     |
+| `CONTACT-SETUP.md`| How to connect the contact form (Resend)          |
+| `MAILCHIMP-SETUP.md` | How to connect the mailing list                |
 | `README.md`       | This guide                                        |
+
+### How brands and product areas work
+
+```
+Luck Is For Dudes (parent)
+├── Core collection     → full site.html  (#products)
+│   ├── T-shirts
+│   ├── Mugs
+│   ├── Keyrings
+│   └── Custom prints
+└── Inches (18+)        → inches/index.html
+    ├── T-shirts
+    ├── Mugs
+    └── Keyrings
+```
+
+Each product card can be “assigned” with two attributes:
+
+```html
+<article class="product-card" data-brand="inches" data-category="tshirts">
+```
+
+| Attribute | Meaning | Examples |
+|-----------|---------|----------|
+| `data-brand` | Which sub-brand owns it | `core`, `inches` |
+| `data-category` | Product type / area | `tshirts`, `mugs`, `keyrings`, `custom` |
+
+On the Inches page, the **All / T-shirts / Mugs / Keyrings** chips filter by `data-category`.
 
 ---
 
@@ -63,13 +102,40 @@ That’s it. If it opens in the wrong programme, right-click the file → **Open
 
 ## How to change prices
 
-In `full site.html`, find the product cards. Look for lines like:
+In `full site.html` (core) or `inches/index.html` (Inches), find the product cards. Look for lines like:
 
 ```html
 <p class="product-price">from £18</p>
 ```
 
 Change `£18` to whatever you like (keep the £ symbol for British pounds).
+
+---
+
+## How to add a product to the right brand / area
+
+### Core brand (main shop)
+
+1. Open **`full site.html`**.
+2. Find the product grid under **Core collection**.
+3. Copy an existing `<article class="product-card">…</article>`.
+4. Set `data-brand="core"` and the right `data-category` (`tshirts`, `mugs`, `keyrings`, or `custom`).
+5. Change the name, description and price. Save and refresh.
+
+### Inches (or another sub-brand page)
+
+1. Open **`inches/index.html`**.
+2. Find the category block you want (`id="tshirts"`, `id="mugs"`, or `id="keyrings"`).
+3. Copy a product card **inside that block**.
+4. Keep `data-brand="inches"` and match `data-category` to the block (`tshirts` / `mugs` / `keyrings`).
+5. Change the text and price. Save and refresh.
+
+### How to add a new sub-brand later
+
+1. Copy the whole **`inches/`** folder and rename it (e.g. `newbrand/`).
+2. Edit the new `index.html`: change titles, colours/text, and product cards.
+3. On **`full site.html`**, copy a **brand card** in the Brands section and point its link at `newbrand/`.
+4. (Optional) tweak colours in `styles.css` if you want a unique look.
 
 ---
 
@@ -113,7 +179,13 @@ The **Notify me** box on the holding page saves emails in **Mailchimp**.
 
 ### Contact form (full shop page)
 
-The contact form on `full site.html` is still a demo (thank-you message only). We can wire that up separately later.
+The questions form on `full site.html` emails you via **Resend**:
+
+- Form posts to `/api/contact` on Vercel
+- You receive the message at `CONTACT_TO_EMAIL` (default: `admindudes@luckisfordudes.com`)
+- **Reply** goes to the visitor (Reply-To is their address)
+
+**Setup guide:** see **`CONTACT-SETUP.md`** (Resend API key + Vercel env vars).
 
 ---
 

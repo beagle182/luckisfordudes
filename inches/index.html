@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CHANGE THIS: browser tab title for this sub-brand -->
+  <title>Inches | Luck Is For Dudes</title>
+  <meta name="description" content="Inches — the adult-themed silly sub-brand from Luck Is For Dudes. T-shirts, mugs and keyrings with cheeky humour. 18+.">
+  <meta name="robots" content="noindex"><!-- optional: remove when you want this page in search results -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="brand-inches">
+
+  <!-- ========== NAVIGATION ========== -->
+  <header class="site-header site-header-inches">
+    <div class="container header-inner">
+      <a href="/devtemptobedeleted/#brands" class="logo logo-sub">
+        <span class="logo-parent">Luck Is For Dudes</span>
+        <span class="logo-divider" aria-hidden="true">/</span>
+        <!-- CHANGE THIS: sub-brand name in the header -->
+        <span class="logo-child">Inches</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="/devtemptobedeleted/">Home</a></li>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#tshirts">T-shirts</a></li>
+          <li><a href="#mugs">Mugs</a></li>
+          <li><a href="#keyrings">Keyrings</a></li>
+          <li><a href="/devtemptobedeleted/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Age / tone notice -->
+    <div class="age-banner" role="note">
+      <div class="container">
+        <strong>18+ area.</strong>
+        Inches is adult-themed silly humour — cheeky, not serious.
+        If that’s not your vibe, hop back to the
+        <a href="/devtemptobedeleted/#brands">main brands</a>.
+      </div>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero hero-inches" aria-labelledby="hero-title">
+      <div class="hero-burst" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <p class="hero-kicker">Sub-brand of Luck Is For Dudes</p>
+        <!-- CHANGE THIS: big headline for Inches -->
+        <h1 id="hero-title" class="hero-title">Inches</h1>
+        <p class="hero-tagline">
+          Adult-themed merch for people who like a silly double entendre
+          and zero shame. T-shirts, mugs and keyrings — same quality prints,
+          different punchlines.
+        </p>
+        <div class="hero-actions">
+          <a href="#shop" class="btn btn-primary">Shop Inches</a>
+          <a href="/devtemptobedeleted/#brands" class="btn btn-secondary">All brands</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SHOP + CATEGORIES ========== -->
+    <section id="shop" class="section products products-inches" aria-labelledby="shop-title">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Product areas</p>
+          <h2 id="shop-title" class="section-title">Pick a category</h2>
+          <p class="section-intro">
+            Products below are assigned to an Inches category.
+            Use the chips to filter, or scroll to a section.
+          </p>
+        </div>
+
+        <!--
+          Category filter chips.
+          data-filter values must match data-category on product cards:
+          all | tshirts | mugs | keyrings
+        -->
+        <div class="category-nav category-filter" role="toolbar" aria-label="Filter Inches products">
+          <button type="button" class="category-chip is-active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="category-chip" data-filter="tshirts" aria-pressed="false">T-shirts</button>
+          <button type="button" class="category-chip" data-filter="mugs" aria-pressed="false">Mugs</button>
+          <button type="button" class="category-chip" data-filter="keyrings" aria-pressed="false">Keyrings</button>
+        </div>
+
+        <!-- ===== T-SHIRTS ===== -->
+        <div class="category-block" id="tshirts" data-category-block="tshirts">
+          <h3 class="category-heading">T-shirts</h3>
+          <p class="category-lead">Soft tees with Inches designs. Add more cards in this block to grow the range.</p>
+
+          <div class="product-grid">
+
+            <!--
+              HOW TO ADD A PRODUCT
+              1. Copy one <article class="product-card"> … </article>
+              2. Set data-brand="inches" and data-category="tshirts" | "mugs" | "keyrings"
+              3. Change the name, description, price (and image if you have one)
+              4. Put the card inside the matching category-block
+            -->
+
+            <article class="product-card" data-brand="inches" data-category="tshirts">
+              <div class="product-art product-art-inches-1" aria-hidden="true">
+                <span class="product-emoji">👕</span>
+              </div>
+              <p class="product-meta"><span class="product-brand-tag product-brand-tag-inches">Inches</span> · T-shirts</p>
+              <!-- CHANGE THIS: product name -->
+              <h3 class="product-name">Classic Inches tee</h3>
+              <!-- CHANGE THIS: product description -->
+              <p class="product-desc">
+                Soft cotton, loud print, silly adult gag. Perfect for nights out
+                and friends who “get it”.
+              </p>
+              <!-- CHANGE THIS: price -->
+              <p class="product-price">from <span>£18</span></p>
+            </article>
+
+            <article class="product-card" data-brand="inches" data-category="tshirts">
+              <div class="product-art product-art-inches-2" aria-hidden="true">
+                <span class="product-emoji">👕</span>
+              </div>
+              <p class="product-meta"><span class="product-brand-tag product-brand-tag-inches">Inches</span> · T-shirts</p>
+              <h3 class="product-name">Statement tee</h3>
+              <p class="product-desc">
+                Bigger print, bolder joke. Swap this placeholder for your real design name.
+              </p>
+              <p class="product-price">from <span>£20</span></p>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ===== MUGS ===== -->
+        <div class="category-block" id="mugs" data-category-block="mugs">
+          <h3 class="category-heading">Mugs</h3>
+          <p class="category-lead">Kitchen-table chaos. Assign mug designs here.</p>
+
+          <div class="product-grid">
+
+            <article class="product-card" data-brand="inches" data-category="mugs">
+              <div class="product-art product-art-inches-3" aria-hidden="true">
+                <span class="product-emoji">☕</span>
+              </div>
+              <p class="product-meta"><span class="product-brand-tag product-brand-tag-inches">Inches</span> · Mugs</p>
+              <h3 class="product-name">Inches mug</h3>
+              <p class="product-desc">
+                Morning coffee with a side of double entendre. Dishwasher-friendly silliness.
+              </p>
+              <p class="product-price">from <span>£12</span></p>
+            </article>
+
+            <article class="product-card" data-brand="inches" data-category="mugs">
+              <div class="product-art product-art-inches-1" aria-hidden="true">
+                <span class="product-emoji">☕</span>
+              </div>
+              <p class="product-meta"><span class="product-brand-tag product-brand-tag-inches">Inches</span> · Mugs</p>
+              <h3 class="product-name">Desk mug</h3>
+              <p class="product-desc">
+                Office-safe until someone reads it twice. Replace with your real mug title.
+              </p>
+              <p class="product-price">from <span>£12</span></p>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ===== KEYRINGS ===== -->
+        <div class="category-block" id="keyrings" data-category-block="keyrings">
+          <h3 class="category-heading">Keyrings</h3>
+          <p class="category-lead">Pocket-sized Inches. Add keyring designs in this block.</p>
+
+          <div class="product-grid">
+
+            <article class="product-card" data-brand="inches" data-category="keyrings">
+              <div class="product-art product-art-inches-2" aria-hidden="true">
+                <span class="product-emoji">🔑</span>
+              </div>
+              <p class="product-meta"><span class="product-brand-tag product-brand-tag-inches">Inches</span> · Keyrings</p>
+              <h3 class="product-name">Inches keyring</h3>
+              <p class="product-desc">
+                Small, sturdy, and quietly ridiculous on a set of keys.
+              </p>
+              <p class="product-price">from <span>£6</span></p>
+            </article>
+
+            <article class="product-card" data-brand="inches" data-category="keyrings">
+              <div class="product-art product-art-inches-3" aria-hidden="true">
+                <span class="product-emoji">🔑</span>
+              </div>
+              <p class="product-meta"><span class="product-brand-tag product-brand-tag-inches">Inches</span> · Keyrings</p>
+              <h3 class="product-name">Mini charm</h3>
+              <p class="product-desc">
+                Placeholder for a second keyring design — rename when you have art ready.
+              </p>
+              <p class="product-price">from <span>£7</span></p>
+            </article>
+
+          </div>
+        </div>
+
+        <p class="filter-empty" id="filter-empty" hidden>
+          No products in this category yet. Add a product card with the matching
+          <code>data-category</code>.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA back to main brand hub -->
+    <section class="section brand-cta" aria-labelledby="cta-title">
+      <div class="container brand-cta-inner">
+        <h2 id="cta-title" class="section-title">More from Luck Is For Dudes</h2>
+        <p class="section-intro">
+          Inches is one sub-brand. Head back for the core comic-parody line and any new shops we add.
+        </p>
+        <a href="/devtemptobedeleted/#brands" class="btn btn-primary">See all brands</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">Inches <span class="footer-brand-sub">by Luck Is For Dudes</span></p>
+      <p class="footer-copy">&copy; <span id="year"></span> Luck Is For Dudes. All rights reserved.</p>
+      <p class="footer-tag">Adult silly merch. 18+.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

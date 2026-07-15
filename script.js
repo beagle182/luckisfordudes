@@ -33,47 +33,142 @@
     });
   }
 
-  // ----- Contact form (demo only — does not send email) -----
+  // ----- Contact form → /api/contact (Resend on Vercel) -----
   var form = document.getElementById("contact-form");
   var statusEl = document.getElementById("form-status");
+  var submitBtn = form ? form.querySelector('button[type="submit"]') : null;
 
   if (form && statusEl) {
+    function showContactStatus(message, isError) {
+      statusEl.hidden = false;
+      statusEl.classList.toggle("is-error", !!isError);
+      statusEl.textContent = message;
+    }
+
     form.addEventListener("submit", function (event) {
-      event.preventDefault(); // stop the page from refreshing
+      event.preventDefault();
 
       var name = form.elements.namedItem("name");
       var email = form.elements.namedItem("email");
+      var subject = form.elements.namedItem("subject");
       var message = form.elements.namedItem("message");
+      var website = form.elements.namedItem("website");
 
       var nameVal = name && "value" in name ? String(name.value).trim() : "";
       var emailVal = email && "value" in email ? String(email.value).trim() : "";
-      var messageVal = message && "value" in message ? String(message.value).trim() : "";
+      var subjectVal =
+        subject && "value" in subject ? String(subject.value).trim() : "";
+      var messageVal =
+        message && "value" in message ? String(message.value).trim() : "";
+      var websiteVal =
+        website && "value" in website ? String(website.value).trim() : "";
 
       if (!nameVal || !emailVal || !messageVal) {
-        statusEl.hidden = false;
-        statusEl.classList.add("is-error");
-        // CHANGE THIS: error message if fields are empty
-        statusEl.textContent = "Please fill in your name, email and message.";
+        showContactStatus("Please fill in your name, email and message.", true);
         return;
       }
 
-      // Very light email check
       if (emailVal.indexOf("@") === -1 || emailVal.indexOf(".") === -1) {
-        statusEl.hidden = false;
-        statusEl.classList.add("is-error");
-        statusEl.textContent = "Please enter a valid email address.";
+        showContactStatus("Please enter a valid email address.", true);
         return;
       }
 
-      statusEl.hidden = false;
-      statusEl.classList.remove("is-error");
-      // CHANGE THIS: thank-you message after “sending”
-      statusEl.textContent =
-        "Thanks, " +
-        nameVal +
-        "! Your message is ready — this demo form doesn’t send email yet, but your site layout works. Check the README when you want real messages.";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+      }
+      showContactStatus("Sending your message…", false);
 
-      form.reset();
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: nameVal,
+          email: emailVal,
+          subject: subjectVal,
+          message: messageVal,
+          website: websiteVal,
+        }),
+      })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            return { ok: res.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.data && result.data.ok) {
+            showContactStatus(
+              result.data.message ||
+                "Thanks! Your message is on its way — we’ll reply soon.",
+              false
+            );
+            form.reset();
+          } else {
+            showContactStatus(
+              (result.data && result.data.error) ||
+                "Something went wrong. Please try again or email us directly.",
+              true
+            );
+          }
+        })
+        .catch(function () {
+          showContactStatus(
+            "Could not reach the server. Check your connection, or email us directly.",
+            true
+          );
+        })
+        .finally(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Send message";
+          }
+        });
     });
+  }
+
+  // ----- Category filter (sub-brand shop pages, e.g. Inches) -----
+  // Buttons with data-filter="all|tshirts|mugs|keyrings" show/hide
+  // blocks with data-category-block and cards with data-category.
+  var filterBar = document.querySelector(".category-filter");
+  if (filterBar) {
+    var chips = filterBar.querySelectorAll("[data-filter]");
+    var blocks = document.querySelectorAll("[data-category-block]");
+    var emptyEl = document.getElementById("filter-empty");
+
+    function applyFilter(filter) {
+      var visibleCount = 0;
+
+      chips.forEach(function (chip) {
+        var active = chip.getAttribute("data-filter") === filter;
+        chip.classList.toggle("is-active", active);
+        chip.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+
+      blocks.forEach(function (block) {
+        var cat = block.getAttribute("data-category-block");
+        var show = filter === "all" || cat === filter;
+        block.hidden = !show;
+        if (show) {
+          var cards = block.querySelectorAll(".product-card");
+          visibleCount += cards.length;
+        }
+      });
+
+      if (emptyEl) {
+        emptyEl.hidden = visibleCount > 0;
+      }
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        applyFilter(chip.getAttribute("data-filter") || "all");
+      });
+    });
+
+    // Honour URL hash on load (#tshirts, #mugs, #keyrings)
+    var hash = (window.location.hash || "").replace("#", "");
+    if (hash === "tshirts" || hash === "mugs" || hash === "keyrings") {
+      applyFilter(hash);
+    }
   }
 })();
