@@ -1,0 +1,8 @@
+{
+  "name": "luckisfordudes",
+  "private": true,
+  "description": "Luck Is For Dudes static site + Vercel functions",
+  "dependencies": {
+    "@vercel/edge": "^1.2.1"
+  }
+}

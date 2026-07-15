@@ -12,3 +12,7 @@ Desktop.ini
 
 .vercel
 .env*
+
+node_modules/
+.vercel/
+.preview-cookies.txt
