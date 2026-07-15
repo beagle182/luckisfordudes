@@ -4,250 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- CHANGE THIS: browser tab title -->
-  <title>Luck Is For Dudes | Parody Art Merch</title>
-  <meta name="description" content="Luck Is For Dudes — bold parody artwork on tees, mugs, keyrings and more. Made for comic fans who like a laugh.">
+  <title>Luck Is For Dudes | Coming Soon</title>
+  <meta name="description" content="Luck Is For Dudes is coming soon — bold parody art merch for comic fans. Tees, mugs, keyrings and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="holding-page">
 
-  <!-- ========== NAVIGATION ========== -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <!-- CHANGE THIS: short name in the top bar -->
-      <a href="#top" class="logo">Luck Is For Dudes</a>
+  <main class="holding">
+    <div class="holding-burst" aria-hidden="true"></div>
+    <div class="holding-dots" aria-hidden="true"></div>
 
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
+    <div class="holding-card">
+      <!-- CHANGE THIS: small label above the title -->
+      <p class="holding-kicker">Parody art merch</p>
 
-      <nav class="main-nav" id="main-nav" aria-label="Main">
-        <ul class="nav-list">
-          <li><a href="#about">About</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+      <!-- CHANGE THIS: brand name -->
+      <h1 class="holding-title">Luck Is For Dudes</h1>
 
-  <main id="top">
+      <!-- Big comic “stamp” -->
+      <p class="holding-stamp" aria-label="Coming soon">Coming Soon</p>
 
-    <!-- ========== HERO ========== -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-burst" aria-hidden="true"></div>
-      <div class="container hero-content">
-        <p class="hero-kicker">Original parody art merch</p>
-        <!-- CHANGE THIS: big headline -->
-        <h1 id="hero-title" class="hero-title">Luck Is For Dudes</h1>
-        <!-- CHANGE THIS: your tagline -->
-        <p class="hero-tagline">
-          Bold designs for comic fans who don’t take life too seriously.
-          Tees, mugs, keyrings and more — printed with our own artwork.
+      <!-- CHANGE THIS: short teaser text -->
+      <p class="holding-text">
+        Bold designs for comic fans who don’t take life too seriously.
+        Tees, mugs, keyrings and more are on the way — stay tuned.
+      </p>
+
+      <ul class="holding-tags" aria-label="What’s coming">
+        <li>Graphic tees</li>
+        <li>Mugs</li>
+        <li>Keyrings</li>
+        <li>Custom prints</li>
+      </ul>
+
+      <!-- CHANGE THIS: optional email for “notify me” — form is demo only -->
+      <form class="holding-form" id="holding-form" novalidate>
+        <label class="visually-hidden" for="holding-email">Email address</label>
+        <div class="holding-form-row">
+          <input
+            type="email"
+            id="holding-email"
+            name="email"
+            autocomplete="email"
+            required
+            placeholder="your@email.com"
+          >
+          <button type="submit" class="btn btn-primary">Notify me</button>
+        </div>
+        <p class="holding-form-note">
+          Optional — drop your email so we can shout when we launch.
+          (Demo only for now; doesn’t send mail yet.)
         </p>
-        <div class="hero-actions">
-          <a href="#products" class="btn btn-primary">Shop the merch</a>
-          <a href="#contact" class="btn btn-secondary">Get in touch</a>
-        </div>
-      </div>
-    </section>
+        <p class="form-status" id="holding-status" role="status" aria-live="polite" hidden></p>
+      </form>
 
-    <!-- ========== ABOUT ========== -->
-    <section id="about" class="section about" aria-labelledby="about-title">
-      <div class="container about-grid">
-        <div class="about-text">
-          <p class="section-kicker">Who we are</p>
-          <!-- CHANGE THIS: About heading -->
-          <h2 id="about-title" class="section-title">Made for laughs, built for fans</h2>
-          <!-- CHANGE THIS: About paragraphs — tell your real story -->
-          <p>
-            Luck Is For Dudes started as a pile of sketchbooks and a love of comic-book chaos.
-            We draw our own parody-style artwork and print it on everyday stuff you actually use —
-            because a good gag deserves more than a lonely hard drive.
-          </p>
-          <p>
-            Every design is made in-house. We keep the lines bold, the jokes sharp, and the
-            colours loud enough to wake the neighbours. Perfect if you collect comics, love
-            pop culture, or just want a mug that starts conversations.
-          </p>
-          <ul class="about-points">
-            <!-- CHANGE THIS: selling points -->
-            <li>In-house artwork — not random clip art</li>
-            <li>Printed on quality blanks you’ll want to wear and use</li>
-            <li>Small batches with big personality</li>
-          </ul>
-        </div>
+      <!-- CHANGE THIS: your real email -->
+      <p class="holding-contact">
+        Questions?
+        <a href="mailto:hello@luckisfordudes.example">hello@luckisfordudes.example</a>
+      </p>
+    </div>
 
-        <div class="about-media">
-          <!--
-            CHANGE THIS: your About photo
-            1. Put a photo in the images folder (e.g. about.jpg)
-            2. Uncomment the <img> line below and delete (or hide) the placeholder div
-          -->
-          <!-- <img src="images/about.jpg" alt="Luck Is For Dudes studio or product shot" class="about-photo"> -->
-          <div class="placeholder-art about-placeholder" role="img" aria-label="Placeholder for your photo">
-            <span class="placeholder-badge">POW!</span>
-            <span class="placeholder-caption">Your photo here<br><small>Drop images/about.jpg in the images folder</small></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== PRODUCTS ========== -->
-    <section id="products" class="section products" aria-labelledby="products-title">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-kicker">What we make</p>
-          <!-- CHANGE THIS: Products section heading -->
-          <h2 id="products-title" class="section-title">Merch that hits like a splash page</h2>
-          <!-- CHANGE THIS: short intro under the heading -->
-          <p class="section-intro">
-            Pick your weapon of choice. Prices are starting points — drop us a message for
-            sizes, colours and special requests.
-          </p>
-        </div>
-
-        <div class="product-grid">
-
-          <!-- Product 1 -->
-          <article class="product-card">
-            <div class="product-art product-art-1" aria-hidden="true">
-              <!-- Optional: replace this whole div with <img src="images/product-tee.jpg" alt="Graphic tee" class="product-photo"> -->
-              <span class="product-emoji">👕</span>
-            </div>
-            <!-- CHANGE THIS: product name -->
-            <h3 class="product-name">Graphic tees</h3>
-            <!-- CHANGE THIS: product description -->
-            <p class="product-desc">
-              Soft cotton tees with our boldest prints. Built for conventions, coffee runs
-              and “where did you get that?” moments.
-            </p>
-            <!-- CHANGE THIS: price -->
-            <p class="product-price">from <span>£18</span></p>
-          </article>
-
-          <!-- Product 2 -->
-          <article class="product-card">
-            <div class="product-art product-art-2" aria-hidden="true">
-              <span class="product-emoji">☕</span>
-            </div>
-            <h3 class="product-name">Mugs</h3>
-            <p class="product-desc">
-              Morning fuel, meet punchline. Dishwasher-friendly humour for desks,
-              studios and kitchen tables.
-            </p>
-            <p class="product-price">from <span>£12</span></p>
-          </article>
-
-          <!-- Product 3 -->
-          <article class="product-card">
-            <div class="product-art product-art-3" aria-hidden="true">
-              <span class="product-emoji">🔑</span>
-            </div>
-            <h3 class="product-name">Keyrings</h3>
-            <p class="product-desc">
-              Pocket-sized chaos. Tough little charms featuring mini versions of our
-              favourite gags.
-            </p>
-            <p class="product-price">from <span>£6</span></p>
-          </article>
-
-          <!-- Product 4 -->
-          <article class="product-card">
-            <div class="product-art product-art-4" aria-hidden="true">
-              <span class="product-emoji">🖼️</span>
-            </div>
-            <h3 class="product-name">Custom prints</h3>
-            <p class="product-desc">
-              Want a design on something else, or a special run for a club or event?
-              Let’s talk sizes, finishes and turnaround.
-            </p>
-            <p class="product-price">from <span>£25</span></p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== CONTACT ========== -->
-    <section id="contact" class="section contact" aria-labelledby="contact-title">
-      <div class="container contact-grid">
-        <div class="contact-info">
-          <p class="section-kicker">Say hello</p>
-          <!-- CHANGE THIS: Contact heading -->
-          <h2 id="contact-title" class="section-title">Orders, collabs &amp; questions</h2>
-          <!-- CHANGE THIS: Contact intro -->
-          <p>
-            Fancy a tee in a different size, a bulk order for a comic club, or just want to
-            know what’s printing next? Send a note — we read every message.
-          </p>
-
-          <ul class="contact-details">
-            <!-- CHANGE THIS: your real email -->
-            <li>
-              <strong>Email</strong>
-              <a href="mailto:hello@luckisfordudes.example">hello@luckisfordudes.example</a>
-            </li>
-            <!-- CHANGE THIS: your real phone (or delete this whole <li> block) -->
-            <li>
-              <strong>Phone</strong>
-              <a href="tel:+441234567890">01234 567 890</a>
-            </li>
-            <!-- CHANGE THIS: location if you want it public -->
-            <li>
-              <strong>Based in</strong>
-              <span>United Kingdom</span>
-            </li>
-          </ul>
-
-          <p class="contact-note">
-            <!-- CHANGE THIS: response time note -->
-            We usually reply within 1–2 working days. This form is a demo for now —
-            it doesn’t send real email yet (see the README for how to wire that up later).
-          </p>
-        </div>
-
-        <div class="contact-form-wrap">
-          <form class="contact-form" id="contact-form" novalidate>
-            <div class="form-group">
-              <label for="name">Your name</label>
-              <input type="text" id="name" name="name" autocomplete="name" required placeholder="Alex Example">
-            </div>
-            <div class="form-group">
-              <label for="email">Email address</label>
-              <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@example.com">
-            </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="Order enquiry / collaboration / hello">
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required placeholder="Tell us what you need…"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-full">Send message</button>
-            <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
+    <p class="holding-footer">&copy; <span id="year"></span> Luck Is For Dudes</p>
   </main>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <!-- CHANGE THIS: footer text -->
-      <p class="footer-brand">Luck Is For Dudes</p>
-      <p class="footer-copy">&copy; <span id="year"></span> Luck Is For Dudes. All rights reserved.</p>
-      <p class="footer-tag">Parody art merch for comic-book souls.</p>
-    </div>
-  </footer>
+  <script>
+    (function () {
+      var yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  <script src="script.js"></script>
+      var form = document.getElementById("holding-form");
+      var statusEl = document.getElementById("holding-status");
+      if (!form || !statusEl) return;
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var email = form.elements.namedItem("email");
+        var value = email && "value" in email ? String(email.value).trim() : "";
+
+        if (!value || value.indexOf("@") === -1 || value.indexOf(".") === -1) {
+          statusEl.hidden = false;
+          statusEl.classList.add("is-error");
+          statusEl.textContent = "Please enter a valid email address.";
+          return;
+        }
+
+        statusEl.hidden = false;
+        statusEl.classList.remove("is-error");
+        // CHANGE THIS: thank-you message
+        statusEl.textContent = "Nice one — you’re on the list (demo). We’ll be live before you can say “POW!”";
+        form.reset();
+      });
+    })();
+  </script>
 </body>
 </html>
